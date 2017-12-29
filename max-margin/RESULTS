@@ -1,0 +1,40 @@
+############# training output(truncated) - for epoch 14
+
+Image to text: 1.0, 3.5, 7.0, 185.0
+Text to image: 0.5, 2.4, 4.8, 99.0
+Epoch  14 Update  17970 Cost  105.804199219 UD  0.00281500816345
+Computing ranks...
+Image to text: 0.5, 3.5, 5.5, 221.0
+Text to image: 0.5, 2.4, 4.9, 99.0
+Epoch  14 Update  17975 Cost  97.2114105225 UD  0.00265288352966
+Computing ranks...
+Image to text: 0.5, 3.0, 4.5, 249.0
+Text to image: 0.5, 2.4, 4.9, 99.0
+Epoch  14 Update  17980 Cost  74.9040527344 UD  0.00266981124878
+Computing ranks...
+Image to text: 0.5, 2.5, 5.0, 249.0
+Text to image: 0.5, 2.4, 5.0, 99.0
+Epoch  14 Update  17985 Cost  65.9812393188 UD  0.00268292427063
+Computing ranks...
+Image to text: 0.5, 2.5, 4.5, 221.0
+Text to image: 0.5, 2.4, 4.9, 100.0
+Epoch  14 Update  17990 Cost  87.8690261841 UD  0.00278282165527
+Computing ranks...
+Image to text: 0.0, 3.0, 4.5, 221.0
+Text to image: 0.5, 2.4, 4.9, 99.0
+Epoch  14 Update  17995 Cost  66.3319549561 UD  0.00281405448914
+Computing ranks...
+Image to text: 0.5, 4.5, 7.0, 248.0
+Text to image: 0.6, 2.5, 4.8, 99.0
+Epoch  14 Update  18000 Cost  90.3144378662 UD  0.00268387794495
+Computing ranks...
+Image to text: 0.5, 2.5, 5.0, 274.0
+Text to image: 0.6, 2.5, 4.8, 100.0
+t@ridingmonk:~/Sohil/max-margin$ 
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+Issues and Resolutions
+
+Issue 1. ImportError: ('The following error happened while compiling the node', InplaceDimShuffle{x}(TensorConstant{0.0}), '\n', '/home/sam/.theano/compiledir_Linux-4.8--generic-i686-with-debian-stretch-sid-i686-2.7.13-32/tmpVPNwFe/0abe19206004f55475830d020f9a6684.so: undefined symbol: _ZdlPvj')
+
+Resolution - export LD_PRELOAD=/usr/lib/i386-linux-gnu/libstdc++.so.6
+
+
+Issue 2 - Related  to float64 bit
+Resolution - echo -e "\n[global]\nfloatX=float32\n" >> ~/.theanorc
+
+
+Issue 3 - TensorType(float32, matrix) cannot store a value of dtype float64 without risking loss of precision. If you do not mind this loss, you can: 1) explicitly cast your data to float32, or 2) set "allow_input_downcast=True" when calling "function".
+
+Resolution
+
+
+## DT-RNN
+1. Run dparse_to_dtree_dtr.py (Provide required configs)
+	SENT_FILE - Sentence text file
+	RAW_PARSES_FILE - Filename for raw parses of dependency tree
+	STANFORD_LEXPARSER - Location of stanford lexical parser
+	FINAL_SPLIT_FILE - Final split filename
+2. Run word2vec_gen.py (Provide required text file in directory location)
+	SENT_DIR - Keep sentence text file at this location
+	SAVE_MODEL - Word2Vec generated embeddings are saved as this file
+3. Run single_process_dtr.py (Provide required configs)
+	FINAL_SPLIT_FILE - file location generated in step 1
+	W2V_FILE - Word2Vec embedding file generated in step 2
+	SAVE_NPY - Filename for saving complete dependency tree for sentences
+	
+
+
+## Image-Processing
+1. Create 3 separate image datasets for train, test and dev by using following command.
+	find <Flicker8k_Dataset/> | grep -F -f <image_list_train> | xargs cp -t <imageset_train/>
+2.
+
+## Image-Sentence Ranking
+To use this, you need to prepare 3 lists: one each for training, development and testing. Each list should consist of 3 entries. The first entry is a list of sentences, the second entry is a numpy array of image features for the corresponding sentences (e.g. GoogLeNet/VGG/OxfordNet) and the third entry is a numpy array of word vectors for the corresponding sentences.
+
+To train a model, open eval_rank.py and set the hyperparameters as desired in the trainer function. Then simply run:
+
+    import eval_rank
+    eval_rank.trainer(train, dev)
+
+where train and dev are the lists you created. The model will train for the maximum numbers of epochs specified and periodically compute ranks on the development set. If the ranks improve, it will save the model. After training is done, you can evaluate a saved model by calling the evaluate function:
+
+    eval_rank.evaluate(dev, saveto, evaluate=True)
+
+This will load a saved model from the 'saveto' path and evaluate on the development set (alternatively, past the test list instead to evaluate on the test set).
+
+
