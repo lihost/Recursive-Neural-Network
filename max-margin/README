@@ -33,20 +33,15 @@ Resolution
 ## Image-Processing
 1. Create 3 separate image datasets for train, test and dev by using following command.
 	find <Flicker8k_Dataset/> | grep -F -f <image_list_train> | xargs cp -t <imageset_train/>
-2.
+2. Run image_process.py (Provide required configs)
+	IMAGE_SET_DIR - folder location where images(for train, test, dev) are kept.
+	IMAGE_FILENAMES - Text file mentioning image names(for train, test, dev) as provided by flickr.
+	SAVED_IMAGE_VEC - Filename for saving individual image vectors(train, test, dev).
 
-## Image-Sentence Ranking
-To use this, you need to prepare 3 lists: one each for training, development and testing. Each list should consist of 3 entries. The first entry is a list of sentences, the second entry is a numpy array of image features for the corresponding sentences (e.g. GoogLeNet/VGG/OxfordNet) and the third entry is a numpy array of word vectors for the corresponding sentences.
 
-To train a model, open eval_rank.py and set the hyperparameters as desired in the trainer function. Then simply run:
+## Max-Margin objective - Main training and evaluation
+1. Run data_preprocess.py (Provide required configs)
+	- Provide sentence vectors(train, test, dev) and image vectors(train, test, dev) files which we generated from DT-RNN and Image-Processing steps respectively.
 
-    import eval_rank
-    eval_rank.trainer(train, dev)
-
-where train and dev are the lists you created. The model will train for the maximum numbers of epochs specified and periodically compute ranks on the development set. If the ranks improve, it will save the model. After training is done, you can evaluate a saved model by calling the evaluate function:
-
-    eval_rank.evaluate(dev, saveto, evaluate=True)
-
-This will load a saved model from the 'saveto' path and evaluate on the development set (alternatively, past the test list instead to evaluate on the test set).
-
+	- Just for the sake of running training, I have already provided required vector files.
 
